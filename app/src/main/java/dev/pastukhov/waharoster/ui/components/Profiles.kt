@@ -9,6 +9,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -43,10 +45,14 @@ private fun ProfilesItem(text: String) {
     Box(
         modifier = Modifier
             .aspectRatio(1f)
-            .border(2.dp, color = Color.Blue)
+            .border(4.dp, color = Color.Blue, shape = CutCornerShape(topStart = 8.dp, bottomEnd = 8.dp))
             .padding(8.dp), contentAlignment = Alignment.Center
     ) {
-        Text(modifier = Modifier.padding(8.dp), text = text)
+        Text(
+            modifier = Modifier.padding(8.dp),
+            text = text,
+            style = MaterialTheme.typography.bodyLarge,
+        )
     }
 }
 
