@@ -1,5 +1,6 @@
 package dev.pastukhov.waharoster.ui.components
 
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.width
@@ -16,16 +17,18 @@ import dev.pastukhov.waharoster.data.WargearOption
 
 @Composable
 fun Wargear(wargears: List<WargearOption>) {
-    wargears.forEach { wargear ->
-        Row {
-            Icon(painter = rememberVectorPainter(Icons.Filled.Clear), contentDescription = wargear.title)
-            Text(text = wargear.title)
-        }
-        wargear.option.forEach { option ->
+    Column {
+        wargears.forEach { wargear ->
             Row {
-                Spacer(modifier = Modifier.width(24.dp))
-                Icon(painter = rememberVectorPainter(Icons.Filled.Add), contentDescription = option)
-                Text(text = option)
+                Icon(painter = rememberVectorPainter(Icons.Filled.Clear), contentDescription = wargear.title)
+                Text(text = wargear.title)
+            }
+            wargear.option.forEach { option ->
+                Row {
+                    Spacer(modifier = Modifier.width(24.dp))
+                    Icon(painter = rememberVectorPainter(Icons.Filled.Add), contentDescription = option)
+                    Text(text = option)
+                }
             }
         }
     }
