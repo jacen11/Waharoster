@@ -9,7 +9,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import dev.pastukhov.waharoster.ui.accounts.AccountsScreen
 import dev.pastukhov.waharoster.ui.accounts.SingleAccountScreen
 import dev.pastukhov.waharoster.ui.bills.BillsScreen
-import dev.pastukhov.waharoster.ui.overview.OverviewScreen
+import dev.pastukhov.waharoster.ui.datasheet.DatasheetScreen
 
 interface WaharosterDestination {
     val icon: ImageVector
@@ -19,8 +19,8 @@ interface WaharosterDestination {
 
 object Overview : WaharosterDestination {
     override val icon = Icons.Filled.Person
-    override val route = "overview"
-    override val screen: @Composable () -> Unit = { OverviewScreen() }
+    override val route = "datasheet"
+    override val screen: @Composable () -> Unit = { DatasheetScreen() }
 }
 
 object Accounts : WaharosterDestination {

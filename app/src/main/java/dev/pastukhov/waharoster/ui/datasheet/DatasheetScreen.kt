@@ -1,4 +1,4 @@
-package dev.pastukhov.waharoster.ui.overview
+package dev.pastukhov.waharoster.ui.datasheet
 
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
@@ -16,14 +16,16 @@ import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import dev.pastukhov.waharoster.data.weaponSample
+import dev.pastukhov.waharoster.ui.components.WeaponDetailInfo
 
 @Composable
-fun OverviewScreen() {
+fun DatasheetScreen() {
     Column(
         modifier = Modifier
             .padding(16.dp)
             .verticalScroll(rememberScrollState())
-            .semantics { contentDescription = "Overview Screen" }
+            .semantics { contentDescription = "Datasheet Screen" }
     ) {
         Datasheet()
     }
@@ -34,6 +36,7 @@ fun Datasheet() {
     Column {
         DatasheetName(text = "Tactical Squad")
         Profiles(list = listOf("1", "2", "3", "4", "5", "6"))
+        WeaponDetailInfo(weapon = weaponSample)
         Text(text = "cgfhfvtnhs")
         Text(text = "Tactical Squad")
         Text(text = "Tactical Squad")
