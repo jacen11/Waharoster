@@ -48,8 +48,8 @@ fun WeaponRange(type: WeaponType) {
             .fillMaxWidth()
             .background(MaterialTheme.colorScheme.secondary)
     ) {
-        Image(painter = rememberVectorPainter(type.icon), contentDescription = type.name)
-        Text(text = type.name)
+        Image(painter = rememberVectorPainter(type.icon), contentDescription = type.title)
+        Text(text = type.title)
     }
 }
 
