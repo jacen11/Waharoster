@@ -18,7 +18,6 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import dev.pastukhov.waharoster.data.SampleDatasheet
-import dev.pastukhov.waharoster.data.sampleWeaponList
 import dev.pastukhov.waharoster.ui.components.Profiles
 import dev.pastukhov.waharoster.ui.components.Spoiler
 import dev.pastukhov.waharoster.ui.components.Wargear
@@ -45,13 +44,12 @@ fun Datasheet() {
         datasheet.profiles.forEach { profile ->
             if (profile.title.isNotBlank()) {
                 Text(text = profile.title)
-                Profiles(profile)
-            } else {
-                Profiles(profile)
             }
+            Profiles(profile)
+
         }
         Spacer(modifier = Modifier.height(24.dp))
-        Spoiler("Weapons") { WeaponInfo(weapons = sampleWeaponList) }
+        Spoiler("Weapons") { WeaponInfo(weapons = datasheet.weapons) }
         Spacer(modifier = Modifier.height(24.dp))
         Spoiler("Wargear") { Wargear(datasheet.wargear) }
     }

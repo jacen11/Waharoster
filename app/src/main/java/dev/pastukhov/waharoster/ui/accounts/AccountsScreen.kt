@@ -1,11 +1,11 @@
 package dev.pastukhov.waharoster.ui.accounts
 
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Column
+import androidx.compose.material3.Button
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.semantics.contentDescription
-import androidx.compose.ui.semantics.semantics
 import dev.pastukhov.waharoster.data.UserData
 import dev.pastukhov.waharoster.ui.components.AccountRow
 import dev.pastukhov.waharoster.ui.components.StatementBody
@@ -17,26 +17,15 @@ import dev.pastukhov.waharoster.ui.components.StatementBody
 fun AccountsScreen(
     onAccountClick: (String) -> Unit = {},
 ) {
-    val amountsTotal = remember { UserData.accounts.map { account -> account.balance }.sum() }
-    StatementBody(
-        modifier = Modifier.semantics { contentDescription = "Accounts Screen" },
-        items = UserData.accounts,
-        amounts = { account -> account.balance },
-        colors = { account -> account.color },
-        amountsTotal = amountsTotal,
-        circleLabel = "stringResource(R.string.total)",
-        rows = { account ->
-            AccountRow(
-                modifier = Modifier.clickable {
-                    onAccountClick(account.name)
-                },
-                name = account.name,
-                number = account.number,
-                amount = account.balance,
-                color = account.color
-            )
+    Column {
+        Button(onClick = { /*TODO*/ }, modifier = Modifier) {
+            Text(text = "sdfifsdf")
         }
-    )
+        Button(onClick = { /*TODO*/ }, modifier = Modifier) {
+            Text(text = "hfghfgdh")
+        }
+    }
+
 }
 
 /**

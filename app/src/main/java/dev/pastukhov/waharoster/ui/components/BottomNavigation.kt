@@ -42,13 +42,10 @@ import dev.pastukhov.waharoster.Bills
 import dev.pastukhov.waharoster.Overview
 import dev.pastukhov.waharoster.WaharosterDestination
 import dev.pastukhov.waharoster.ui.theme.WaharosterTheme
-import java.util.Locale
 
 @Composable
 fun BottomNavigation(
-    allScreens: List<WaharosterDestination>,
-    onTabSelected: (WaharosterDestination) -> Unit,
-    currentScreen: WaharosterDestination
+    allScreens: List<WaharosterDestination>, onTabSelected: (WaharosterDestination) -> Unit, currentScreen: WaharosterDestination
 ) {
 
     Row(
@@ -71,22 +68,17 @@ fun BottomNavigation(
 
 @Composable
 private fun BottomNavigationItem(
-    modifier: Modifier = Modifier,
-    text: String, icon: ImageVector, onSelected: () -> Unit, selected: Boolean
+    modifier: Modifier = Modifier, text: String, icon: ImageVector, onSelected: () -> Unit, selected: Boolean
 ) {
     val color = MaterialTheme.colorScheme.onSurface
     val durationMillis = if (selected) TabFadeInAnimationDuration else TabFadeOutAnimationDuration
     val animSpec = remember {
         tween<Color>(
-            durationMillis = durationMillis,
-            easing = LinearEasing,
-            delayMillis = TabFadeInAnimationDelay
+            durationMillis = durationMillis, easing = LinearEasing, delayMillis = TabFadeInAnimationDelay
         )
     }
     val tabTintColor by animateColorAsState(
-        targetValue = if (selected) color else color.copy(alpha = InactiveTabOpacity),
-        animationSpec = animSpec,
-        label = ""
+        targetValue = if (selected) color else color.copy(alpha = InactiveTabOpacity), animationSpec = animSpec, label = ""
     )
 
     Column(modifier = modifier
@@ -103,54 +95,13 @@ private fun BottomNavigationItem(
             )
         )
         .clearAndSetSemantics { contentDescription = text }
-        .fillMaxHeight(),
-        horizontalAlignment = Alignment.CenterHorizontally) {
+        .fillMaxHeight(), horizontalAlignment = Alignment.CenterHorizontally) {
         Icon(imageVector = icon, contentDescription = text, tint = tabTintColor)
         Spacer(Modifier.width(12.dp))
         Text(text, color = tabTintColor)
     }
 }
 
-@Composable
-private fun BottomNavigationItemTest(
-    text: String, icon: ImageVector, onSelected: () -> Unit, selected: Boolean
-) {
-    val color = MaterialTheme.colorScheme.onSurface
-    val durationMillis = if (selected) TabFadeInAnimationDuration else TabFadeOutAnimationDuration
-    val animSpec = remember {
-        tween<Color>(
-            durationMillis = durationMillis,
-            easing = LinearEasing,
-            delayMillis = TabFadeInAnimationDelay
-        )
-    }
-    val tabTintColor by animateColorAsState(
-        targetValue = if (selected) color else color.copy(alpha = InactiveTabOpacity),
-        animationSpec = animSpec
-    )
-    Row(modifier = Modifier
-        .padding(16.dp)
-        .animateContentSize()
-        .height(TabHeight)
-        .selectable(
-            selected = selected,
-            onClick = onSelected,
-            role = Role.Tab,
-            interactionSource = remember { MutableInteractionSource() },
-            indication = rememberRipple(
-                bounded = false, radius = Dp.Unspecified, color = Color.Unspecified
-            )
-        )
-        .clearAndSetSemantics { contentDescription = text }) {
-        Icon(imageVector = icon, contentDescription = text, tint = tabTintColor)
-        if (selected) {
-            Spacer(Modifier.width(12.dp))
-            Text(text.uppercase(Locale.getDefault()), color = tabTintColor)
-        }
-    }
-}
-
-private val TabHeight = 56.dp
 private const val InactiveTabOpacity = 0.60f
 
 private const val TabFadeInAnimationDuration = 150
@@ -166,35 +117,6 @@ fun BottomNavigationPreview() {
             onTabSelected = {},
             currentScreen = Overview,
         )
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun BottomNavigationItemTestPreview() {
-    WaharosterTheme {
-        Column {
-            BottomNavigationItemTest(
-                text = "Overview2",
-                icon = Icons.Filled.Person,
-                onSelected = {},
-                selected = false,
-            )
-
-            BottomNavigationItemTest(
-                text = "Overview",
-                icon = Icons.Filled.AccountBox,
-                onSelected = {},
-                selected = true,
-            )
-
-            BottomNavigationItemTest(
-                text = "Overview2",
-                icon = Icons.Filled.Phone,
-                onSelected = {},
-                selected = false,
-            )
-        }
     }
 }
 

@@ -6,7 +6,7 @@ class Datasheet(
     val weapons: List<Weapon>,
     val wargear: List<WargearOption>,
     val abilities: String,
-    val factionKeywords: String,
+    val factionKeywords: FactionKeywords,
     val keywords: String,
 )
 
@@ -42,6 +42,17 @@ val SampleDatasheet = Datasheet(
     weapons = sampleWeaponList,
     wargear = listOf(SampleWargearOption1, SampleWargearOption2),
     abilities = "",
-    factionKeywords = "",
+    factionKeywords = FactionKeywords("rggdf"),
+    keywords = "",
+)
+val SampleDatasheet2 = Datasheet(
+    name = "Bike Squad",
+    profiles = listOf(
+        Profile(move = "12\"", toughness = "5", save = "3+", wounds = "3", leadership = "6+", objectiveControl = "2", title = ""),
+     ),
+    weapons = sampleWeaponList,
+    wargear = listOf(SampleWargearOption1, SampleWargearOption2),
+    abilities = "",
+    factionKeywords =FactionKeywords("rggdf"),
     keywords = "",
 )
