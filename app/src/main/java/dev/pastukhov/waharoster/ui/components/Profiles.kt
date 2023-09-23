@@ -40,7 +40,6 @@ fun Profiles(profile: Profile) {
 
 @Composable
 private fun ProfilesItem(text: String) {
-
     Box(
         modifier = Modifier
             .aspectRatio(1f)
@@ -54,7 +53,7 @@ private fun ProfilesItem(text: String) {
 @Preview(showBackground = true)
 @Composable
 fun ProfilesPreview() {
-    WaharosterTheme() {
+    WaharosterTheme {
         Column(Modifier.padding(16.dp)) {
             Profiles(SampleDatasheet.profiles.first())
         }
